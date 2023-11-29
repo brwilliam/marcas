@@ -4,5 +4,6 @@ const router = express.Router();
 const marcaController = new MarcaController();
 
 router.get('/',marcaController.getAll )
+router.get('/:id',marcaController.getById )
 
-modele.exports = router; 
+module.exports = router; 
