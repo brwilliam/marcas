@@ -9,19 +9,22 @@ function ListaDeMarcas() {
     const carregaMarcas = async () => {
       try {
         const dados = await marcaService.getAllMarcas();
+        const dados3 = await marcaService.getMarcasById(3);
+        console.log('dados',dados3);
         setMarcas(dados);
-        console.log("Erro ao carregar marcas:", err);
-      } catch (error) {}
+      } catch (error) {
+        console.log("Erro ao carregar marcas:", error);
+      }
     };
 
     carregaMarcas();
-  },[]);
+  }, []);
 
   return (
     <ul>
-      {marcas.map(() => {
-        <li key={marca.id}>{marca.descricao}</li>;
-      })}
+      {marcas.map((marca) => (
+        <li key={marca.id}>{marca.descricao}</li>
+      ))}
     </ul>
   );
 }
